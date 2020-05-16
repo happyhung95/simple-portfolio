@@ -3,23 +3,25 @@ import './Header.scss';
 
 const Header = () => (
   <nav className="navbar" title="Navigation bar with links and logo">
+    {/* eslint-disable global-require */}
     <img
       className="navbar__logo"
-      src="../../assets/images/hung-logo.png"
+      src={require('../../assets/images/hung-logo.png')}
       alt="logo"
     />
+    {/* eslint-disable global-require */}
     <ul className="navbar__links">
       <li>
-        <a href="#">Blogs</a>
+        <a href="#blog">Blogs</a>
       </li>
       <li>
-        <a href="#">Projects</a>
+        <a href="#project">Projects</a>
       </li>
       <li>
-        <a href="#">Skills</a>
+        <a href="#techStack">Skills</a>
       </li>
       <li>
-        <a href="#">Contact</a>
+        <a href="#contact">Contact</a>
       </li>
     </ul>
   </nav>

@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer';
 import './assets/styles/_util.scss';
 
 const App = () => (
-  <div>
+  <section>
     <Header />
     <Intro />
     <Blog />
@@ -18,7 +18,7 @@ const App = () => (
     <Project />
     <Contact />
     <Footer />
-  </div>
+  </section>
 );
 
 export default App;

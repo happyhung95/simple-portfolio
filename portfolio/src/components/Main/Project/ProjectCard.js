@@ -10,17 +10,17 @@ const ProjectCard = ({
   subtitle,
   paragraph,
   buttonLabel,
-  imageURL,
+  image,
 }) => {
   const projectId = `project-${id}`;
   const subtitleId = `subtitle-${id}`;
   const buttonId = `btn-${id}`;
   const buttonAriaLabelledBy = `${projectId} ${buttonId}`;
-
   return (
     <section className="project__card" id={projectId} title={title}>
       <div role="img" className="project__img">
-        <img alt="project" src={imageURL} />
+        {/* eslint-disable-next-line global-require,import/no-dynamic-require */}
+        <img alt="project" src={image} />
       </div>
       <article className="project__article">
         <h3 className="project__title">{title}</h3>
@@ -44,7 +44,7 @@ ProjectCard.propTypes = {
   subtitle: PropTypes.string,
   paragraph: PropTypes.string.isRequired,
   buttonLabel: PropTypes.string,
-  imageURL: PropTypes.string,
+  image: PropTypes.any,
 };
 
 export default ProjectCard;

@@ -8,36 +8,38 @@ const stacks = [
   {
     id: 1,
     title: 'Javascript',
-    className: 'fab fa-js',
+    icon: 'fab fa-js-square',
   },
   {
     id: 2,
     title: 'HTML5',
-    className: 'fab fa-html5',
+    icon: 'fab fa-html5',
   },
   {
     id: 3,
     title: 'React',
-    className: 'fab fa-react',
+    icon: 'fab fa-react',
   },
   {
     id: 4,
     title: 'SASS',
-    className: 'fab fa-sass',
+    icon: 'fab fa-sass',
   },
   {
     id: 5,
     title: 'CSS3',
-    className: 'fab fa-css3',
+    icon: 'fab fa-css3',
   },
 ];
 
 const TechStack = () => (
-  <section title="tech stacks">
-    <Heading>Tech Stacks</Heading>
-    {stacks.map(({ id, title, className }) => (
-      <TechIcon id={id} title={title} className={className} />
-    ))}
+  <section title="tech stacks" id="techStack">
+    <Heading title="Tech Stacks" />
+    <section className="tech">
+      {stacks.map(({ id, title, icon }) => (
+        <TechIcon key={`tech-${id}`} id={id} title={title} icon={icon} />
+      ))}
+    </section>
   </section>
 );
 

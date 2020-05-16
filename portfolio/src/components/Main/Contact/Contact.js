@@ -5,8 +5,8 @@ import Button from '../../Shared/Button/Button';
 import './Contact.scss';
 
 const Contact = () => (
-  <section title="contact us section">
-    <Heading id="form"> Contact us</Heading>
+  <section title="contact us section" id="contact">
+    <Heading id="form" title="Contact us" />
     <div className="form">
       <form className="form__container" aria-label="Send us a message">
         <label htmlFor="fullName">

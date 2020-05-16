@@ -26,7 +26,7 @@ const BlogCard = ({ id, title, paragraph, buttonLabel }) => {
   );
 };
 
-BlogCard.displayName = 'Project Card';
+BlogCard.displayName = 'Blog Card';
 BlogCard.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,

@@ -29,11 +29,12 @@ const blogs = [
 ];
 
 const Blog = () => (
-  <section title="blogs">
-    <Heading>Blogs</Heading>
+  <section title="blogs" id="blog">
+    <Heading title="Blogs" />
     <section className="blog">
       {blogs.map(({ id, title, paragraph, buttonLabel }) => (
         <BlogCard
+          key={`blog-${id}`}
           id={id}
           title={title}
           paragraph={paragraph}

@@ -1,17 +1,40 @@
-@import '../../assets/styles/variables';
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixin";
 
 .footer {
   display: flex;
-  justify-content: flex-end;
-  div {
+  justify-content: space-around;
+  align-items: center;
+  margin: $space-tiny-1rem;
+
+  &__logo {
+    display: flex;
+    a {
+      text-decoration: none;
+      padding-left: 1rem;
+    }
+    i {
+      color: $primary-color;
+      font-size: 2.5rem;
+    }
+  }
+  &__text {
     padding: 0 $space-tiny-1rem;
     font-weight: bold;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
-  a {
-    text-decoration: none;
-  }
-  i {
-    color: $primary-color;
-    font-size: 2rem;
+  @include ipad-view {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    &__text {
+      flex-direction: row;
+
+      div {
+        padding-right: 5px;
+      }
+    }
   }
 }

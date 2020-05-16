@@ -2,6 +2,9 @@ import React from 'react';
 
 import Heading from '../../Shared/Heading/Heading';
 import ProjectCard from './ProjectCard';
+import projectImg1 from '../../../assets/images/img-1.jpg';
+import projectImg2 from '../../../assets/images/img-2.jpg';
+import projectImg3 from '../../../assets/images/img-3.jpg';
 import './Project.scss';
 
 const dummyParagraph =
@@ -14,7 +17,7 @@ const projects = [
     subtitle: 'Coordinator: Hung',
     paragraph: dummyParagraph,
     buttonLabel: 'Read more',
-    imageURL: '../../../assets/images/img-1.jpg',
+    image: projectImg1,
   },
   {
     id: 2,
@@ -22,7 +25,7 @@ const projects = [
     subtitle: 'Coordinator: Hung',
     paragraph: dummyParagraph,
     buttonLabel: 'Read more',
-    imageURL: '../../../assets/images/img-2.jpg',
+    image: projectImg2,
   },
   {
     id: 3,
@@ -30,25 +33,28 @@ const projects = [
     subtitle: 'Coordinator: Hung',
     paragraph: dummyParagraph,
     buttonLabel: 'Read more',
-    imageURL: '../../../assets/images/img-3.jpg',
+    image: projectImg3,
   },
 ];
 
 const Project = () => (
-  <section className="project-container" title="projects">
-    <Heading>Projects</Heading>
-    {projects.map(
-      ({ id, title, subtitle, paragraph, buttonLabel, imageURL }) => (
-        <ProjectCard
-          id={id}
-          title={title}
-          subtitle={subtitle}
-          paragraph={paragraph}
-          buttonLabel={buttonLabel}
-          imageURL={imageURL}
-        />
-      )
-    )}
+  <section title="projects" id="project">
+    <Heading title="Projects" />
+    <section className="project">
+      {projects.map(
+        ({ id, title, subtitle, paragraph, buttonLabel, image }) => (
+          <ProjectCard
+            key={`project-${id}`}
+            id={id}
+            title={title}
+            subtitle={subtitle}
+            paragraph={paragraph}
+            buttonLabel={buttonLabel}
+            image={image}
+          />
+        )
+      )}
+    </section>
   </section>
 );
 

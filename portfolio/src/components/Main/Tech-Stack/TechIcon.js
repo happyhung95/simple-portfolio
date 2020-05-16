@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import './TechIcon.scss';
 
-const TechIcon = ({ id, className, title }) => {
+const TechIcon = ({ id, icon, title }) => {
   const iconId = `tech-icon-${id}`;
   return (
     <div className="tech__item">
-      <i id={iconId} className={className} aria-hidden="true" title={title} />
+      <i id={iconId} className={icon} aria-hidden="true" title={title} />
       <p>{title}</p>
     </div>
   );
@@ -16,7 +16,7 @@ const TechIcon = ({ id, className, title }) => {
 TechIcon.displayName = 'Tech Icon';
 TechIcon.propTypes = {
   id: PropTypes.number.isRequired,
-  className: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
