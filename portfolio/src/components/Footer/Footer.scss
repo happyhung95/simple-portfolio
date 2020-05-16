@@ -1,0 +1,17 @@
+@import '../../assets/styles/variables';
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  div {
+    padding: 0 $space-tiny-1rem;
+    font-weight: bold;
+  }
+  a {
+    text-decoration: none;
+  }
+  i {
+    color: $primary-color;
+    font-size: 2rem;
+  }
+}

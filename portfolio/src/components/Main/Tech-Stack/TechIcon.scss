@@ -1,0 +1,35 @@
+@import "../../../assets/styles/util";
+
+.tech {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    i {
+      align-self: center;
+      font-size: 5rem;
+      color: $tech-icon;
+    }
+    p {
+      align-self: center;
+      color: $tech-text;
+    }
+  }
+}
+
+// Add animations
+#tech-icon-1 {
+  @include wiggle-animation(0.8s, 10deg, -10deg, 0s);
+}
+#tech-icon-2 {
+  @include wiggle-animation(0.8s, 10deg, -10deg, -0.4s);
+}
+#tech-icon-3 {
+  @include wiggle-animation(2.5s, 0deg, 360deg, -1s);
+}
+#tech-icon-4 {
+  @include wiggle-animation(0.8s, 10deg, -10deg, -0.6s);
+}
+#tech-icon-5 {
+  @include wiggle-animation(0.8s, 10deg, -10deg, 0.3s);
+}
