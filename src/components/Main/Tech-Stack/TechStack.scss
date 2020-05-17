@@ -1,0 +1,19 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixin';
+
+.tech {
+  margin: 0 $space-small-2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  justify-items: center;
+  @include ipad-view {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  &__no-logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 0 1rem;
+  }
+}
