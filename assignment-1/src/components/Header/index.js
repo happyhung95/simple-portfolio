@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Link from './Link';
-import BurgerMenu from './BurgerMenu';
-import './Header.scss';
+import Logo from "./Logo";
+import Links from "./Links";
+import BurgerMenu from "./BurgerMenu";
+import SideBar from "./SideBar";
+import logo from "../../assets/images/hung-logo.png";
+import "./Header.scss";
 
 const links = [
   {
-    label: 'Blogs',
-    url: '#blog',
+    label: "Blogs",
+    url: "#blog",
   },
   {
-    label: 'Projects',
-    url: '#project',
+    label: "Projects",
+    url: "#project",
   },
   {
-    label: 'Skills',
-    url: '#techStack',
+    label: "Skills",
+    url: "#techStack",
   },
   {
-    label: 'Contact',
-    url: '#contact',
+    label: "Contact",
+    url: "#contact",
   },
 ];
 
@@ -28,18 +31,10 @@ const Header = () => {
 
   return (
     <nav className="navbar" title="Navigation bar with links and logo">
-      {/* eslint-disable global-require */}
-      <img
-        className="navbar__logo"
-        src={require('../../assets/images/hung-logo.png')}
-        alt="logo"
-      />
-      <ul className="navbar__links">
-        {links.map(({ label, url }) => (
-          <Link url={url} label={label} />
-        ))}
-      </ul>
+      <Logo image={logo} />
+      <Links links={links} />
       <BurgerMenu setOpen={setOpen} open={open} />
+      <SideBar open={open} links={links} />
     </nav>
   );
 };

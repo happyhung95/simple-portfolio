@@ -1,6 +1,5 @@
 import React from 'react';
 import { string } from 'prop-types';
-import './Link .scss';
 
 const Link = ({ label, url }) => (
   <li>

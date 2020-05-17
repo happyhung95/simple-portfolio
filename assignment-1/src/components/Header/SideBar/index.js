@@ -1,13 +1,27 @@
-import React from 'react';
+import React from "react";
+import classNames from "classnames";
+import { object, bool } from "prop-types";
 
-import './SideBar.scss';
+import Link from "../Links/Link";
+import "./SideBar.scss";
 
-const SideBar = () => {
+const SideBar = ({ links, open }) => {
+  const styles = classNames({
+    sidebar: true,
+    'sidebar--open': open
+  })
   return (
-    <div>
-
-    </div>
+    <section className={styles}>
+      {links.map(({ label, url }) => (
+        <Link key={url} href={url} url={url} label={label} />
+      ))}
+    </section>
   );
+};
+
+SideBar.propTypes = {
+  links: object.isRequired,
+  open: bool.isRequired,
 };
 
 export default SideBar;

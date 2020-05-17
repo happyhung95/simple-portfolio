@@ -1,6 +1,8 @@
 @import '../../../assets/styles/variables';
 @import '../../../assets/styles/mixin';
 
+// mobile-first
+
 .intro {
   display: flex;
   flex-direction: column-reverse;

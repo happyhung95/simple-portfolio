@@ -1,5 +1,7 @@
-@import "../../../assets/styles/variables";
-@import "../../../assets/styles/mixin";
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixin";
+
+// mobile-first
 
 .project {
   &__card {
@@ -8,7 +10,7 @@
   &__img {
     display: flex;
     img {
-      height: 200px;
+      height: 170px;
       //border-radius: 50px;
     }
   }

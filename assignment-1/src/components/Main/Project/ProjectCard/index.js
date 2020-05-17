@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../Shared/Button';
+import Button from '../../../Shared/Button';
 import './ProjectCard.scss';
 
 const ProjectCard = ({
