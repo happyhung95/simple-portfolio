@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ft4-react-assignment-1/static/css/main.4b14cf9c.chunk.css",
+    "main.css": "/ft4-react-assignment-1/static/css/main.1d5cef02.chunk.css",
     "main.js": "/ft4-react-assignment-1/static/js/main.07bde5bb.chunk.js",
     "main.js.map": "/ft4-react-assignment-1/static/js/main.07bde5bb.chunk.js.map",
     "runtime-main.js": "/ft4-react-assignment-1/static/js/runtime-main.b809cb17.js",
@@ -8,9 +8,9 @@
     "static/js/2.7a3a4ad8.chunk.js": "/ft4-react-assignment-1/static/js/2.7a3a4ad8.chunk.js",
     "static/js/2.7a3a4ad8.chunk.js.map": "/ft4-react-assignment-1/static/js/2.7a3a4ad8.chunk.js.map",
     "index.html": "/ft4-react-assignment-1/index.html",
-    "precache-manifest.ea6ffe9a9bdfb1ff19dab0705328c584.js": "/ft4-react-assignment-1/precache-manifest.ea6ffe9a9bdfb1ff19dab0705328c584.js",
+    "precache-manifest.87a7e9804b10178b348c6934069328a2.js": "/ft4-react-assignment-1/precache-manifest.87a7e9804b10178b348c6934069328a2.js",
     "service-worker.js": "/ft4-react-assignment-1/service-worker.js",
-    "static/css/main.4b14cf9c.chunk.css.map": "/ft4-react-assignment-1/static/css/main.4b14cf9c.chunk.css.map",
+    "static/css/main.1d5cef02.chunk.css.map": "/ft4-react-assignment-1/static/css/main.1d5cef02.chunk.css.map",
     "static/js/2.7a3a4ad8.chunk.js.LICENSE.txt": "/ft4-react-assignment-1/static/js/2.7a3a4ad8.chunk.js.LICENSE.txt",
     "static/media/img-1.jpg": "/ft4-react-assignment-1/static/media/img-1.ab6575ad.jpg",
     "static/media/img-2.jpg": "/ft4-react-assignment-1/static/media/img-2.121d63bb.jpg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.b809cb17.js",
     "static/js/2.7a3a4ad8.chunk.js",
-    "static/css/main.4b14cf9c.chunk.css",
+    "static/css/main.1d5cef02.chunk.css",
     "static/js/main.07bde5bb.chunk.js"
   ]
 }
