@@ -1,15 +1,22 @@
 import React from 'react';
-import { string } from 'prop-types';
+import {bool, func, string} from 'prop-types';
 
-const Link = ({ label, url }) => (
+// eslint-disable-next-line no-unused-vars
+const Link = ({ label, url, open, setOpen }) => (
   <li>
-    <a href={url}>{label}</a>
+    <a href={url} onClick={()=> {setOpen(!open)}}>{label}</a>
   </li>
 );
 
 Link.propTypes = {
   label: string.isRequired,
   url: string.isRequired,
+  open: bool,
+  setOpen: func
 };
+Link.defaultProps = {
+  open : null,
+  setOpen : null
+}
 
 export default Link;

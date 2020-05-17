@@ -33,8 +33,8 @@ const Header = () => {
     <nav className="navbar" title="Navigation bar with links and logo">
       <Logo image={logo} />
       <Links links={links} />
-      <BurgerMenu setOpen={setOpen} open={open} />
-      <SideBar open={open} links={links} />
+      <BurgerMenu open={open} setOpen={setOpen} />
+      <SideBar open={open} setOpen={setOpen} links={links} />
     </nav>
   );
 };

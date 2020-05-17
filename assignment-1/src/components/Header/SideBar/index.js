@@ -1,19 +1,19 @@
 import React from "react";
 import classNames from "classnames";
-import { object, bool } from "prop-types";
+import { object, bool, func } from "prop-types";
 
 import Link from "../Links/Link";
 import "./SideBar.scss";
 
-const SideBar = ({ links, open }) => {
+const SideBar = ({ links, open, setOpen }) => {
   const styles = classNames({
     sidebar: true,
-    'sidebar--open': open
-  })
+    "sidebar--open": open,
+  });
   return (
     <section className={styles}>
       {links.map(({ label, url }) => (
-        <Link key={url} href={url} url={url} label={label} />
+        <Link key={url} href={url} url={url} label={label} open={open} setOpen={setOpen} />
       ))}
     </section>
   );
@@ -22,6 +22,7 @@ const SideBar = ({ links, open }) => {
 SideBar.propTypes = {
   links: object.isRequired,
   open: bool.isRequired,
+  setOpen: func.isRequired,
 };
 
 export default SideBar;
