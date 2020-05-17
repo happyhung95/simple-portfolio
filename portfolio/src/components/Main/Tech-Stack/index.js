@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Heading from '../../Shared/Heading/Heading';
+import Heading from '../../Shared/Heading';
 import TechIcon from './TechIcon';
 import './TechStack.scss';
 

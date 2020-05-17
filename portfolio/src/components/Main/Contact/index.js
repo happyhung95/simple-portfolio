@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Heading from '../../Shared/Heading/Heading';
-import Button from '../../Shared/Button/Button';
+import Heading from '../../Shared/Heading';
+import Button from '../../Shared/Button';
 import './Contact.scss';
 
 const Contact = () => (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Heading from '../../Shared/Heading/Heading';
+import Heading from '../../Shared/Heading';
 import BlogCard from './BlogCard';
 import './Blog.scss';
 

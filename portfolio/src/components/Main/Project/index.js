@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Heading from '../../Shared/Heading/Heading';
+import Heading from '../../Shared/Heading';
 import ProjectCard from './ProjectCard';
 import projectImg1 from '../../../assets/images/img-1.jpg';
 import projectImg2 from '../../../assets/images/img-2.jpg';
