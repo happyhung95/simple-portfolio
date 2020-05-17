@@ -1,0 +1,8 @@
+@import '../../../assets/styles/variables';
+
+.tech {
+  margin: 0 $space-small-2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
