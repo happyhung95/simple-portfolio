@@ -1,0 +1,7 @@
+export * from './Contact'
+export * from './Footer'
+export * from './Intro'
+export * from './NavBar'
+export * from './Project'
+export * from './SideBar'
+export * from './Tech-Stack'

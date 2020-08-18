@@ -1,0 +1,26 @@
+@import '../../assets/styles/variables';
+
+.btn {
+  color: $button;
+  background: $button-background;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 1px solid transparent;
+  border-bottom: 1px solid darkgrey;
+  padding: 10px;
+
+  a {
+    text-decoration: none;
+    color: $button;
+  }
+
+  &:hover,
+  :active {
+    border: 1px solid white;
+    border-radius: 50px;
+  }
+
+  &--project {
+    width: fit-content;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../assets/styles/mixin';
+@import '../../assets/styles/variables';
+
+.navbar {
+  &__logo {
+    display:flex;
+    align-items: center;
+    width: 45%;
+    max-width: 12rem;
+    img {
+      width: 100%;
+    }
+    @include ipad-view {
+      width: 30%;
+    }
+  }
+}

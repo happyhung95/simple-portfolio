@@ -1,0 +1,26 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixin';
+
+.scroll-down-container {
+  display: hidden;
+  @include desktop-view {
+    display: grid;
+    place-items: center;
+    padding-top: 6vh;
+    position: absolute;
+    width:100%;
+  }
+}
+.scroll-down {
+  width: 0;
+  @include desktop-view {
+    width: 1.5vw;
+    fill: $gray;
+    cursor: pointer;
+    svg {
+      &:hover {
+        fill: black;
+      }
+    }
+  }
+}

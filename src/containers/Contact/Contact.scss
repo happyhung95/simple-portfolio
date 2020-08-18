@@ -1,0 +1,81 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixin';
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: fit-content;
+  max-width: 50vw;
+  padding: 0 1rem;
+  margin-top: -1rem;
+
+  @include desktop-view {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.contact-picture {
+  padding: 0 1rem;
+  max-width: 20rem;
+  img {
+    width: 100%;
+    border-radius: 1rem;
+  }
+  @include desktop-view {
+    max-width: 25%;
+  }
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include desktop-view {
+    align-items: flex-start;
+  }
+}
+
+.contact-name {
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-top: 2rem;
+  @include desktop-view {
+    padding-top: 0;
+    padding-left: 2rem;
+  }
+}
+
+.contact-details {
+  display: flex;
+}
+.contact-details-base {
+  color: $contact-details-base;
+  margin-left: 2rem;
+}
+.contact-details-tail {
+  padding-left: 1rem;
+}
+
+.contact-logo {
+  display: flex;
+  a {
+    text-decoration: none;
+    padding-right: 1rem;
+  }
+  i {
+    color: $primary-color;
+    font-size: 2.5rem;
+  }
+  @include desktop-view {
+    margin-left: -4.4rem;
+  }
+}

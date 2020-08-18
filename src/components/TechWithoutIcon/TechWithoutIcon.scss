@@ -1,0 +1,17 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixin';
+
+// mobile-first
+
+.tech {
+  &__text {
+    font-weight: 600;
+    background-color: $tech-background;
+    color: $tech-text;
+    padding: 15px;
+    border-radius: 1rem;
+    display: inline-block;
+    width: fit-content;
+    margin:5px;
+  }
+}

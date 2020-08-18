@@ -1,24 +1,27 @@
 // colors
 $primary-color: black;
+$pink: #ba094e;
+$gray: #aaa9ad;
 
 $main-title: $primary-color;
-$intro-title: #ba094e;
+$intro-title: $pink;
 
 $sidebar-text: #ffffff;
 $sidebar-background: $primary-color;
-
-$blog-background: rgb(33, 32, 32);
-$blog-text: #ffffff;
 
 $tech-text: #ffffff;
 $tech-icon: $intro-title;
 $tech-background: black;
 
 $button: #ffffff;
-$button-background: $blog-background;
+$button-background: black;
 
+$project-title: white;
+$project-subtitle: white;
 $project-text: white;
-$project-background: #ba094e;
+$project-background: $pink;
+
+$contact-details-base: $pink;
 
 //margins
 $space-big-4rem: 4rem;

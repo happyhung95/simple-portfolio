@@ -1,0 +1,36 @@
+@import '../../assets/styles/mixin';
+@import '../../assets/styles/variables';
+
+// mobile-first
+
+.navbar {
+  &__links {
+    display: none;
+    @include ipad-view {
+      display: flex;
+      width: 70%;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      list-style: none;
+      padding-inline-start: 10px;
+      align-self: center;
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        padding: 0.5rem 0.2rem;
+        &:hover,
+        &:active {
+          color: darkgrey;
+          padding-bottom: 0.4rem;
+          border-bottom: 2px solid black;
+          cursor: pointer;
+        }
+      }
+      @include desktop-view {
+        a {
+          margin-right: $space-tiny-1rem;
+        }
+      }
+    }
+  }
+}

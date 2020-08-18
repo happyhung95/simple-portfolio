@@ -1,0 +1,22 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixin';
+
+.tech {
+  margin: 0 $space-small-2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  justify-items: center;
+  &__no-logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  @include ipad-view {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  @include desktop-view {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

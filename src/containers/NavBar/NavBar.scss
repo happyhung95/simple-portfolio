@@ -1,0 +1,15 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixin';
+
+// mobile-first
+
+.navbar {
+  margin: 0.5rem $space-tiny-1rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  @include desktop-view {
+    height:15vh;
+    margin: 1rem 5rem;
+  }
+}

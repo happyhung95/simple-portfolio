@@ -1,0 +1,47 @@
+@import '../../assets/styles/mixin';
+@import '../../assets/styles/variables';
+
+// mobile-first
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  z-index: 2;
+  align-self: center;
+
+  div {
+    display: flex;
+    height: 0.25rem;
+    background: $primary-color;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  &--open {
+    position: fixed;
+    top: 5%;
+    right: 2rem;
+    div {
+      background: $sidebar-text;
+      &:first-child {
+        transform: rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  @include ipad-view {
+    display: none;
+  }
+}

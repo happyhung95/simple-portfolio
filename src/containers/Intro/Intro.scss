@@ -1,0 +1,61 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixin';
+
+// mobile-first
+.intro-container {
+  @include desktop-view {
+    height: 85vh;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column-reverse;
+  background-size: cover;
+  background: url('../../assets/images/intro.jpg') center;
+  min-height: 60vh;
+  &__title {
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    color: $intro-title;
+  }
+  &__article {
+    padding: $space-small-2rem;
+  }
+
+  &__paragraph {
+    &__bold {
+      font-weight: bolder;
+      span {
+        color: $intro-title;
+        padding-left: 4px;
+      }
+    }
+  }
+
+  @include desktop-view {
+    margin: 0 0 0 $space-tiny-1rem * 3;
+    flex-direction: row;
+    background: none;
+    align-items: center;
+    &__title {
+      background: none;
+      padding: 0;
+      font-size: 6vw;
+      text-align: left;
+    }
+    &__article {
+      width: 50%;
+    }
+    &__img {
+      width: 50%;
+      height: 65vh;
+      padding-left: 5%;
+      background-image: url('../../assets/images/intro.jpg');
+      background-size: cover;
+      background-position: left bottom;
+    }
+  }
+}

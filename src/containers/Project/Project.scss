@@ -1,0 +1,8 @@
+@import '../../assets/styles/variables';
+
+.project {
+  color: $project-text;
+  background: $project-background;
+  padding: $space-small-2rem;
+  margin: 0;
+}

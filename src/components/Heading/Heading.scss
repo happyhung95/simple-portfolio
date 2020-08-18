@@ -1,0 +1,14 @@
+@import '../../assets/styles/variables';
+
+.section-title {
+  display: flex;
+  justify-content: center;
+  color: $main-title;
+  font-size: 3rem;
+  margin: 0;
+  padding: 4rem 0 3rem 0;
+}
+
+#tech-stacks {
+  padding: 1rem 0 3rem 0 !important;
+}

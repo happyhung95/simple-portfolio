@@ -1,16 +1,19 @@
-import React from "react";
+import React from 'react'
 
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
-import "./assets/styles/_util.scss";
+import { Contact, Footer, Intro, NavBar, Project, TechStack } from './containers'
+import './assets/styles/_util.scss'
 
 const App = () => (
   <section>
-    <Header />
-    <Main />
+    <NavBar />
+    <main>
+      <Intro />
+      <TechStack />
+      <Project />
+      <Contact />
+    </main>
     <Footer />
   </section>
-);
+)
 
-export default App;
+export default App

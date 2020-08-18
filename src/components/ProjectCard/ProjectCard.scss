@@ -1,0 +1,68 @@
+@import '/../../assets/styles/variables';
+@import '../../assets/styles/mixin';
+
+// mobile-first
+
+.project {
+  &__card {
+    padding: $space-tiny-1rem 0;
+  }
+  &__img {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
+    img {
+      height: 240px;
+      width: 300px;
+      border-radius: 10px;
+    }
+  }
+  &__article {
+    h3 {
+      font-size: 2rem;
+      margin: 0 0 1rem 0;
+      margin-block-start: 0;
+    }
+  }
+  &__title {
+    color: $project-title;
+    font-style: 600;
+  }
+  &__sub {
+    font-weight: 600;
+    font-style: italic;
+    margin: 0;
+    color: $project-subtitle;
+  }
+
+  @include ipad-view {
+    &__img {
+      img {
+        height: 350px;
+      }
+      padding-bottom: 0;
+    }
+  }
+  @include desktop-view {
+    &__card {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    &__img {
+      max-width: 30vw;
+      max-height: 30vw;
+      padding-bottom: 0;
+      img {
+        width: 100%;
+      }
+    }
+    &__article {
+      max-width: 50vw;
+      padding: 0 $space-tiny-1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
