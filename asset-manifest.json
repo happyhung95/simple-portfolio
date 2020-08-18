@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/simple-portfolio/static/css/main.54502c3b.chunk.css",
+    "main.css": "/simple-portfolio/static/css/main.05752ccc.chunk.css",
     "main.js": "/simple-portfolio/static/js/main.4f6f8613.chunk.js",
     "main.js.map": "/simple-portfolio/static/js/main.4f6f8613.chunk.js.map",
     "runtime-main.js": "/simple-portfolio/static/js/runtime-main.c833fe6c.js",
@@ -8,9 +8,9 @@
     "static/js/2.af2db5b1.chunk.js": "/simple-portfolio/static/js/2.af2db5b1.chunk.js",
     "static/js/2.af2db5b1.chunk.js.map": "/simple-portfolio/static/js/2.af2db5b1.chunk.js.map",
     "index.html": "/simple-portfolio/index.html",
-    "precache-manifest.0bb8ec1921e8a3301189a2105514c2ba.js": "/simple-portfolio/precache-manifest.0bb8ec1921e8a3301189a2105514c2ba.js",
+    "precache-manifest.25243a1eb6e9f20bc65143b6376e15fe.js": "/simple-portfolio/precache-manifest.25243a1eb6e9f20bc65143b6376e15fe.js",
     "service-worker.js": "/simple-portfolio/service-worker.js",
-    "static/css/main.54502c3b.chunk.css.map": "/simple-portfolio/static/css/main.54502c3b.chunk.css.map",
+    "static/css/main.05752ccc.chunk.css.map": "/simple-portfolio/static/css/main.05752ccc.chunk.css.map",
     "static/js/2.af2db5b1.chunk.js.LICENSE.txt": "/simple-portfolio/static/js/2.af2db5b1.chunk.js.LICENSE.txt",
     "static/media/Hung-2020.png": "/simple-portfolio/static/media/Hung-2020.a4ea33d3.png",
     "static/media/bamboo-shop.png": "/simple-portfolio/static/media/bamboo-shop.1800955a.png",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.c833fe6c.js",
     "static/js/2.af2db5b1.chunk.js",
-    "static/css/main.54502c3b.chunk.css",
+    "static/css/main.05752ccc.chunk.css",
     "static/js/main.4f6f8613.chunk.js"
   ]
 }
