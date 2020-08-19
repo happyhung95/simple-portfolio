@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/simple-portfolio/static/css/main.a5512792.chunk.css",
-    "main.js": "/simple-portfolio/static/js/main.b5060322.chunk.js",
-    "main.js.map": "/simple-portfolio/static/js/main.b5060322.chunk.js.map",
+    "main.css": "/simple-portfolio/static/css/main.a8c89c5c.chunk.css",
+    "main.js": "/simple-portfolio/static/js/main.6777c382.chunk.js",
+    "main.js.map": "/simple-portfolio/static/js/main.6777c382.chunk.js.map",
     "runtime-main.js": "/simple-portfolio/static/js/runtime-main.c833fe6c.js",
     "runtime-main.js.map": "/simple-portfolio/static/js/runtime-main.c833fe6c.js.map",
-    "static/js/2.27f9cd5d.chunk.js": "/simple-portfolio/static/js/2.27f9cd5d.chunk.js",
-    "static/js/2.27f9cd5d.chunk.js.map": "/simple-portfolio/static/js/2.27f9cd5d.chunk.js.map",
+    "static/js/2.55c59058.chunk.js": "/simple-portfolio/static/js/2.55c59058.chunk.js",
+    "static/js/2.55c59058.chunk.js.map": "/simple-portfolio/static/js/2.55c59058.chunk.js.map",
     "index.html": "/simple-portfolio/index.html",
-    "precache-manifest.eb12751a6dadc54963e37fc0b8a1b95d.js": "/simple-portfolio/precache-manifest.eb12751a6dadc54963e37fc0b8a1b95d.js",
+    "precache-manifest.767cba4fb1c594b16991376c175642a8.js": "/simple-portfolio/precache-manifest.767cba4fb1c594b16991376c175642a8.js",
     "service-worker.js": "/simple-portfolio/service-worker.js",
-    "static/css/main.a5512792.chunk.css.map": "/simple-portfolio/static/css/main.a5512792.chunk.css.map",
-    "static/js/2.27f9cd5d.chunk.js.LICENSE.txt": "/simple-portfolio/static/js/2.27f9cd5d.chunk.js.LICENSE.txt",
+    "static/css/main.a8c89c5c.chunk.css.map": "/simple-portfolio/static/css/main.a8c89c5c.chunk.css.map",
+    "static/js/2.55c59058.chunk.js.LICENSE.txt": "/simple-portfolio/static/js/2.55c59058.chunk.js.LICENSE.txt",
     "static/media/Hung-2020.png": "/simple-portfolio/static/media/Hung-2020.a4ea33d3.png",
     "static/media/bamboo-shop.png": "/simple-portfolio/static/media/bamboo-shop.1800955a.png",
     "static/media/country-store.png": "/simple-portfolio/static/media/country-store.9912d33f.png",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c833fe6c.js",
-    "static/js/2.27f9cd5d.chunk.js",
-    "static/css/main.a5512792.chunk.css",
-    "static/js/main.b5060322.chunk.js"
+    "static/js/2.55c59058.chunk.js",
+    "static/css/main.a8c89c5c.chunk.css",
+    "static/js/main.6777c382.chunk.js"
   ]
 }
