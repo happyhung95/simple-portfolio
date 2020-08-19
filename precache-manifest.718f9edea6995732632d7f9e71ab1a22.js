@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a7e7fe2be7a595710900a37b3f01216f",
+    "revision": "4b3cdc2894359c0409e9e21965ab2e14",
     "url": "/simple-portfolio/index.html"
   },
   {
-    "revision": "f20b7a97bcdc9a1593b8",
-    "url": "/simple-portfolio/static/css/main.521d2b49.chunk.css"
+    "revision": "a735400a336125528e67",
+    "url": "/simple-portfolio/static/css/main.d0cc60a1.chunk.css"
   },
   {
     "revision": "0b2eee842be93c7233ee",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/simple-portfolio/static/js/2.55c59058.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f20b7a97bcdc9a1593b8",
-    "url": "/simple-portfolio/static/js/main.c39bc7d5.chunk.js"
+    "revision": "a735400a336125528e67",
+    "url": "/simple-portfolio/static/js/main.38e8cd9a.chunk.js"
   },
   {
     "revision": "ae3cd49f435b393381f0",
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/simple-portfolio/static/media/bamboo-shop.1800955a.png"
   },
   {
-    "revision": "9912d33f2443d2bcb8eb4b99e59c064d",
-    "url": "/simple-portfolio/static/media/country-store.9912d33f.png"
+    "revision": "f8415756ec57d21dfa3674c8e501fd7f",
+    "url": "/simple-portfolio/static/media/country-store.f8415756.png"
   },
   {
     "revision": "7408cbace38cf52ebf2eb29f9ef5e44b",
