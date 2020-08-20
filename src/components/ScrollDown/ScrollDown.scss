@@ -6,9 +6,8 @@
   @include desktop-view {
     display: grid;
     place-items: center;
-    padding-top: 6vh;
-    position: absolute;
     width:100%;
+    padding: 2rem 0;
   }
 }
 .scroll-down {

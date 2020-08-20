@@ -4,7 +4,7 @@ import { ScrollDown } from '../../components'
 import './Intro.scss'
 
 export const Intro = () => (
-  <section className="intro-container">
+  <section>
     <div className="intro" title="Introduction section">
       <article className="intro__article" aria-label="Introduction article">
         <h1 className="intro__title">He commits from anywhere</h1>

@@ -2,12 +2,6 @@
 @import '../../assets/styles/mixin';
 
 // mobile-first
-.intro-container {
-  @include desktop-view {
-    height: 85vh;
-  }
-}
-
 .intro {
   display: flex;
   flex-direction: column-reverse;
