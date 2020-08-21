@@ -25,7 +25,7 @@ export const Contact = () => (
               <p>+358 45 696 5215</p>
               <p>happyhung@yahoo.com</p>
               <p>Helsinki, Finland</p>
-              <p>Full Stack and Mobile Development</p>
+              <p>Full Stack Development</p>
               <div className="contact-logo">
                 <a href="https://www.linkedin.com/in/nguyentrangiahung/" aria-label="Link to Linkedin">
                   <i className="fab fa-linkedin" aria-hidden="true" title="Link to Linkedin" />
