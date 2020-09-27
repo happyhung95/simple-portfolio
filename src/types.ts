@@ -23,3 +23,7 @@ export type Game = {
   createdAt: string
   updatedAt: string
 }
+
+export type SVGProps = {
+  className: string
+}
