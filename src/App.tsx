@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { NavBar } from './components/NavBar'
+import { GameCard } from './containers/GameCard'
+import { GameList } from './containers/GameList/index'
+import './tailwind.output.css'
 
 function App() {
+  const [game, setGame] = useState()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <NavBar />
+      <GameList setGame={setGame} />
+      <GameCard game={game} />
+    </>
+  )
 }
 
-export default App;
+export default App
