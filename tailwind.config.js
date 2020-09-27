@@ -7,6 +7,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    outline: ['responsive', 'focus', 'hover', 'active'],
+    backgroundColor: ['responsive', 'hover', 'focus', 'active'],
+  },
   plugins: [],
 }
