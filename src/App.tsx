@@ -1,19 +1,30 @@
 import React, { useState } from 'react'
 
 import { NavBar } from './containers/NavBar'
+import { BottomBar } from './containers/BottomBar'
 import { GameCard } from './containers/GameCard'
 import { GameList } from './containers/GameList'
-import { GameObject } from './types'
+import { Game } from './types'
 import './tailwind.output.css'
 
 function App() {
-  const [game, setGame] = useState<GameObject | undefined>()
+  const [game, setGame] = useState<Game | undefined>()
+  const [isGameListOpen, setGameListOpen] = useState(false)
 
   return (
     <>
       <NavBar />
-      <GameList setGame={setGame} />
-      <GameCard game={game} />
+      <GameList
+        isListOpen={isGameListOpen}
+        setListOpen={setGameListOpen}
+        setGame={setGame}
+      />
+      {!isGameListOpen && game && (
+        <>
+          <GameCard game={game} />
+          <BottomBar game={game} />
+        </>
+      )}
     </>
   )
 }
