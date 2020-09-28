@@ -22,6 +22,7 @@ export type Game = {
   players: Player[]
   createdAt: string
   updatedAt: string
+  gameClosed: boolean
 }
 
 export type SVGProps = {

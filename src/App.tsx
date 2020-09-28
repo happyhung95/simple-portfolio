@@ -11,12 +11,12 @@ import './tailwind.output.css'
 function App() {
   const [game, setGame] = useState<Game | undefined>()
   const [isGameListOpen, setGameListOpen] = useState(false)
-
+  //@ts-ignore
   useEffect(() => {
-    async function fetchGameList() {
-      const res = await axios.get('https://poker-board.herokuapp.com/api/v1/5f6675be94d05d0004a0830d')
-      setGame(res.data)
-    }
+    // async function fetchGameList() {
+    //   const res = await axios.get('https://poker-board.herokuapp.com/api/v1/5f71ef3ab04a03b2a3591e8d')
+    //   setGame(res.data)
+    // }
     // fetchGameList()
   }, [])
 
@@ -26,7 +26,7 @@ function App() {
       <GameSelect isListOpen={isGameListOpen} setListOpen={setGameListOpen} setGame={setGame} />
       {!isGameListOpen && game && (
         <>
-          <GameCard game={game} />
+          <GameCard game={game} setGame={setGame} />
           <FunctionBar game={game} setGame={setGame} />
         </>
       )}

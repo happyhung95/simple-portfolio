@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { AddPlayerForm } from '../../components/AddPlayerForm'
 
 import Transition from '../../components/Transition'
+import { AddPlayerForm } from '../../components/AddPlayerForm'
+import { AddTransactionForm } from '../../components/AddTransactionForm'
 import { CalculatorSVG } from '../../svgs/Calculator'
 import { PeopleSVG } from '../../svgs/People'
 import { TransactionSVG } from '../../svgs/Transaction'
@@ -18,7 +19,7 @@ export const FunctionBar = ({ game, setGame }: Props) => {
   const [showGameBalance, setShowGameBalance] = useState(false)
   const [gameBalance, setGameBalance] = useState(0)
 
-  const { players } = game
+  const { players, gameClosed } = game
 
   const checkSum = () => {
     let totalGameBalance = 0
@@ -32,28 +33,34 @@ export const FunctionBar = ({ game, setGame }: Props) => {
     {
       svg: <PeopleSVG className={svgClassName} />,
       handleClick: () => setShowPlayerForm(!showPlayerForm),
+      skipRender: gameClosed,
     },
     {
       svg: <TransactionSVG className={svgClassName} />,
       handleClick: () => setShowTransactionForm(!showTransactionForm),
+      skipRender: gameClosed,
     },
-    { svg: <CalculatorSVG className={svgClassName} />, handleClick: checkSum },
+    { svg: <CalculatorSVG className={svgClassName} />, handleClick: checkSum, skipRender: false },
   ]
 
   return (
-    <div>
+    <>
       <div className="flex mt-6 px-10 justify-around">
-        {functions.map(({ svg, handleClick }, index) => (
-          <div
-            key={index}
-            role="button"
-            tabIndex={0}
-            className="p-2 border-2 border-gray-700 rounded-lg shadow outline-none"
-            onKeyPress={handleClick}
-            onClick={handleClick}
-          >
-            {svg}
-          </div>
+        {functions.map(({ svg, handleClick, skipRender }, index) => (
+          <>
+            {!skipRender && (
+              <div
+                key={index}
+                role="button"
+                tabIndex={0}
+                className="p-2 border-2 border-gray-700 rounded-lg shadow outline-none"
+                onKeyPress={handleClick}
+                onClick={handleClick}
+              >
+                {svg}
+              </div>
+            )}
+          </>
         ))}
       </div>
       <Transition showCondition={showGameBalance}>
@@ -67,9 +74,12 @@ export const FunctionBar = ({ game, setGame }: Props) => {
           </div>
         )}
       </Transition>
+      <Transition showCondition={showTransactionForm}>
+        <AddTransactionForm game={game} setGame={setGame} />
+      </Transition>
       <Transition showCondition={showPlayerForm}>
         <AddPlayerForm game={game} setGame={setGame} />
       </Transition>
-    </div>
+    </>
   )
 }

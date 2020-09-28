@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
-import React, { useState, useEffect } from 'react'
-import { Formik, FormikHelpers, FormikProps, Form, Field, FieldArray, FieldProps } from 'formik'
+import React from 'react'
+import { Formik, FormikHelpers, Form, Field, FieldArray } from 'formik'
 import axios from 'axios'
 
 import { capitalizeString } from '../../helpers/index'
@@ -16,7 +16,7 @@ type FormValues = {
 }
 
 type AddPlayerRequest = {
-  type: string
+  type: 'add' | 'remove'
   playerId: null
   name: string
 }
@@ -27,10 +27,7 @@ type Request = {
 }
 
 export const AddPlayerForm = ({ game, setGame }: Props) => {
-  const handleSubmit = async (
-    { names }: FormValues,
-    { resetForm, setSubmitting }: Pick<FormikHelpers<FormValues>, 'resetForm' | 'setSubmitting'>
-  ) => {
+  const handleSubmit = async ({ names }: FormValues, { resetForm, setSubmitting }: FormikHelpers<FormValues>) => {
     setSubmitting(false)
     const req: Request = {
       gameId: game._id,
@@ -100,9 +97,8 @@ export const AddPlayerForm = ({ game, setGame }: Props) => {
                   {values.names.length > 0 && (
                     <div className="mt-2 mb-6">
                       <button
-                        className="p-2 border-2 border-white rounded-lg bg-gray-800 text-white font-mono font-semibold"
+                        className="p-2 border-2 border-white rounded-lg bg-gray-800 text-white font-mono font-semibold outline-none"
                         type="submit"
-                        disabled={isSubmitting}
                       >
                         Submit
                       </button>
