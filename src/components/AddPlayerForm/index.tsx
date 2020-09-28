@@ -1,13 +1,7 @@
-import React, { useState } from 'react'
-import {
-  Formik,
-  FormikHelpers,
-  FormikProps,
-  Form,
-  Field,
-  FieldArray,
-  FieldProps,
-} from 'formik'
+/* eslint-disable array-callback-return */
+import React, { useState, useEffect } from 'react'
+import { Formik, FormikHelpers, FormikProps, Form, Field, FieldArray, FieldProps } from 'formik'
+import axios from 'axios'
 
 import { capitalizeString } from '../../helpers/index'
 import { Game } from '../../types'
@@ -17,16 +11,53 @@ type Props = {
   setGame: (value: React.SetStateAction<Game | undefined>) => void
 }
 
+type FormValues = {
+  names: string[]
+}
+
+type AddPlayerRequest = {
+  type: string
+  playerId: null
+  name: string
+}
+
+type Request = {
+  gameId: string
+  requests: AddPlayerRequest[]
+}
+
 export const AddPlayerForm = ({ game, setGame }: Props) => {
+  const handleSubmit = async (
+    { names }: FormValues,
+    { resetForm, setSubmitting }: Pick<FormikHelpers<FormValues>, 'resetForm' | 'setSubmitting'>
+  ) => {
+    setSubmitting(false)
+    const req: Request = {
+      gameId: game._id,
+      requests: [],
+    }
+    names
+      .filter((name) => !!name)
+      .map((name) => {
+        req.requests.push({
+          type: 'add',
+          playerId: null,
+          name: capitalizeString(name),
+        })
+      })
+
+    const updateGame = await axios.post('https://poker-board.herokuapp.com/api/v1/players', { ...req })
+    setGame(updateGame.data as Game)
+    resetForm({})
+  }
+
   return (
     <div className="my-6 mx-4 bg-gray-300 rounded shadow">
-      <div className="pt-4 pl-5 font-bold text-xl text-gray-700 shadow">
-        Add players
-      </div>
+      <div className="pt-4 pl-5 font-bold text-xl text-gray-700 shadow">Add players</div>
       <Formik
-        initialValues={{ names: ['','',''] }}
-        onSubmit={(values) => console.log(values)}
-        render={({ values }) => (
+        initialValues={{ names: ['', '', ''] }}
+        onSubmit={handleSubmit}
+        render={({ values, isSubmitting }) => (
           <Form className=" px-4 border-2">
             <FieldArray
               name="names"
@@ -34,10 +65,7 @@ export const AddPlayerForm = ({ game, setGame }: Props) => {
                 <div>
                   {values.names && values.names.length > 0 ? (
                     values.names.map((name, index) => (
-                      <div
-                        key={index}
-                        className="my-2 flex justify-around items-center"
-                      >
+                      <div key={index} className="my-2 flex justify-around items-center">
                         <p className="text-gray-600 font-bold">Name:</p>
                         <Field
                           className=" w-1/2 py-1/2 px-2 font-mono font-medium text-white border border-gray-600 border-opacity-25 rounded bg-gray-500 outline-none"
@@ -74,6 +102,7 @@ export const AddPlayerForm = ({ game, setGame }: Props) => {
                       <button
                         className="p-2 border-2 border-white rounded-lg bg-gray-800 text-white font-mono font-semibold"
                         type="submit"
+                        disabled={isSubmitting}
                       >
                         Submit
                       </button>

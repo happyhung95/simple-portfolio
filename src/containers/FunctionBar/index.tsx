@@ -48,7 +48,7 @@ export const FunctionBar = ({ game, setGame }: Props) => {
             key={index}
             role="button"
             tabIndex={0}
-            className="p-2 border-2 border-gray-700 rounded-lg shadow outline-none shadow"
+            className="p-2 border-2 border-gray-700 rounded-lg shadow outline-none"
             onKeyPress={handleClick}
             onClick={handleClick}
           >

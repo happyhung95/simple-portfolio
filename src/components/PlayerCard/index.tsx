@@ -19,9 +19,7 @@ export const PlayerCard = ({ player, players }: PlayerCardProps) => {
   return (
     <div
       className={`mb-2 mx-2 border-2 border-gray-300 rounded-md transition
-       ease-in-out duration-200 ${
-         showTransactions && 'border-gray-600 shadow '
-       } `}
+       ease-in-out duration-200 ${showTransactions && 'border-gray-600 shadow '} `}
     >
       {/* Player menu */}
       <div
@@ -33,25 +31,13 @@ export const PlayerCard = ({ player, players }: PlayerCardProps) => {
       >
         <div className="flex items-center">
           <DownArrowSVG
-            className={`h-5 w-5 transform transition duration-200 ease-in-out ${
-              !showTransactions && '-rotate-90'
-            }`}
+            className={`h-5 w-5 transform transition duration-200 ease-in-out ${!showTransactions && '-rotate-90'}`}
           />
-          <div
-            className={`text-lg font-semibold transform ${
-              showTransactions && 'translate-x-2'
-            }`}
-          >
+          <div className={`text-lg font-semibold transform ${showTransactions && 'translate-x-2'}`}>
             {capitalizeString(name)}
           </div>
         </div>
-        <div
-          className={`text-lg font-semibold transform ${
-            showTransactions && '-translate-x-2'
-          }`}
-        >
-          {balance}
-        </div>
+        <div className={`text-lg font-semibold transform ${showTransactions && '-translate-x-2'}`}>{balance}</div>
       </div>
       {/* Transactions */}
       <Transition showCondition={showTransactions}>
