@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import Transition from '../../components/Transition'
 import { AddPlayerForm } from '../../components/AddPlayerForm'
@@ -6,20 +7,17 @@ import { AddTransactionForm } from '../../components/AddTransactionForm'
 import { CalculatorSVG } from '../../svgs/Calculator'
 import { PeopleSVG } from '../../svgs/People'
 import { TransactionSVG } from '../../svgs/Transaction'
-import { Game } from '../../types'
+import { AppState } from '../../types'
 
-type Props = {
-  game: Game
-  setGame: (value: React.SetStateAction<Game | undefined>) => void
-}
 
-export const FunctionBar = ({ game, setGame }: Props) => {
+export const FunctionBar = () => {
+  const game = useSelector((state: AppState) => state.pokerBoard.game)
   const [showPlayerForm, setShowPlayerForm] = useState(false)
   const [showTransactionForm, setShowTransactionForm] = useState(false)
   const [showGameBalance, setShowGameBalance] = useState(false)
   const [gameBalance, setGameBalance] = useState(0)
 
-  const { players, gameClosed } = game
+  const { players, gameClosed } = game!
 
   const checkSum = () => {
     let totalGameBalance = 0
@@ -75,10 +73,10 @@ export const FunctionBar = ({ game, setGame }: Props) => {
         )}
       </Transition>
       <Transition showCondition={showTransactionForm}>
-        <AddTransactionForm game={game} setGame={setGame} />
+        <AddTransactionForm />
       </Transition>
       <Transition showCondition={showPlayerForm}>
-        <AddPlayerForm game={game} setGame={setGame} />
+        <AddPlayerForm />
       </Transition>
     </>
   )

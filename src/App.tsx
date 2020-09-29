@@ -1,35 +1,42 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
+import Transition from './components/Transition'
+import { CreateGame } from './containers/CreateGame'
 import { NavBar } from './containers/NavBar'
 import { FunctionBar } from './containers/FunctionBar'
 import { GameCard } from './containers/GameCard'
 import { GameSelect } from './containers/GameSelect'
-import { Game } from './types'
+import { toggleGameSelect } from './redux/actions'
+import { AppState } from './types'
 import './tailwind.output.css'
 
+
 function App() {
-  const [game, setGame] = useState<Game | undefined>()
-  const [isGameListOpen, setGameListOpen] = useState(false)
-  //@ts-ignore
+  const dispatch = useDispatch()
+  
+  const game = useSelector((state: AppState) => state.pokerBoard.game)
+  const showGameList = useSelector((state: AppState) => state.pokerBoard.showGameList)
+  const showCreateGame = useSelector((state: AppState) => state.pokerBoard.showCreateGame)
+  const showGameSelect = useSelector((state: AppState) => state.pokerBoard.showGameSelect)
+
   useEffect(() => {
-    // async function fetchGameList() {
-    //   const res = await axios.get('https://poker-board.herokuapp.com/api/v1/5f71ef3ab04a03b2a3591e8d')
-    //   setGame(res.data)
-    // }
-    // fetchGameList()
-  }, [])
+    dispatch(toggleGameSelect(true))
+  }, [game])
 
   return (
     <>
       <NavBar />
-      <GameSelect isListOpen={isGameListOpen} setListOpen={setGameListOpen} setGame={setGame} />
-      {!isGameListOpen && game && (
-        <>
-          <GameCard game={game} setGame={setGame} />
-          <FunctionBar game={game} setGame={setGame} />
-        </>
-      )}
+      <Transition showCondition={showCreateGame}>
+        <CreateGame />
+      </Transition>
+      <Transition showCondition={showGameSelect}>
+        <GameSelect />
+      </Transition>
+      <Transition showCondition={!showGameList && !!game}>
+        <GameCard />
+        <FunctionBar />
+      </Transition>
     </>
   )
 }

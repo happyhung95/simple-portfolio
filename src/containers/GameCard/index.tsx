@@ -1,25 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
-import { Game } from '../../types'
+import { Game, AppState } from '../../types'
 import { PlayerCard } from '../../components/PlayerCard'
+import { loadGame } from '../../redux/actions'
 
-type Props = {
-  game: Game
-  setGame: (value: React.SetStateAction<Game | undefined>) => void
-}
+export const GameCard = () => {
+  const dispatch = useDispatch()
+  const game = useSelector((state: AppState) => state.pokerBoard.game)
 
-export const GameCard = ({ game, setGame }: Props) => {
   const changeStatus = async (isClosed: boolean) => {
-    const updateGame = await axios.put(`https://poker-board.herokuapp.com/api/v1/game/${game._id}`, {
+    const res = await axios.put(`https://poker-board.herokuapp.com/api/v1/game/${game?._id}`, {
       gameClosed: isClosed,
     })
-    setGame(updateGame.data as Game)
+    dispatch(loadGame(res.data as Game))
   }
 
   return (
     <div className="mt-2 mx-4 border-2 rounded shadow-sm bg-gray-300 outline-none">
-      {game.gameClosed ? (
+      {game?.gameClosed ? (
         <div className="pl-2 flex justify-between items-center">
           <div className="flex items-center">
             <div className="px-2 ml-3 mr-2 text-white bg-red-500 rounded-full text-sm font-semibold">Finished</div>
@@ -43,10 +43,10 @@ export const GameCard = ({ game, setGame }: Props) => {
               Finish?
             </button>
           </div>
-          <div className="text-right pt-2 pb-1 pr-6 font-semibold text-gray-600">Buy-in: {game.buyIn}</div>
+          <div className="text-right pt-2 pb-1 pr-6 font-semibold text-gray-600">Buy-in: {game?.buyIn}</div>
         </div>
       )}
-      {game.players.map((player, index) => (
+      {game?.players.map((player, index) => (
         <PlayerCard key={index} player={player} players={game.players} />
       ))}
     </div>

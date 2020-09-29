@@ -1,15 +1,12 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Formik, FormikHelpers, Form, Field, FieldArray } from 'formik'
 import axios from 'axios'
 
+import { loadGame } from '../../redux/actions'
 import { capitalizeString } from '../../helpers/index'
-import { Game } from '../../types'
-
-type Props = {
-  game: Game
-  setGame: (value: React.SetStateAction<Game | undefined>) => void
-}
+import { Game, AppState } from '../../types'
 
 type FormValues = {
   names: string[]
@@ -26,11 +23,14 @@ type Request = {
   requests: AddPlayerRequest[]
 }
 
-export const AddPlayerForm = ({ game, setGame }: Props) => {
+export const AddPlayerForm = () => {
+  const dispatch = useDispatch()
+  const game = useSelector((state: AppState) => state.pokerBoard.game)
+
   const handleSubmit = async ({ names }: FormValues, { resetForm, setSubmitting }: FormikHelpers<FormValues>) => {
     setSubmitting(false)
     const req: Request = {
-      gameId: game._id,
+      gameId: game!._id,
       requests: [],
     }
     names
@@ -43,8 +43,8 @@ export const AddPlayerForm = ({ game, setGame }: Props) => {
         })
       })
 
-    const updateGame = await axios.post('https://poker-board.herokuapp.com/api/v1/players', { ...req })
-    setGame(updateGame.data as Game)
+    const res = await axios.post('https://poker-board.herokuapp.com/api/v1/players', { ...req })
+    dispatch(loadGame(res.data as Game))
     resetForm({})
   }
 
@@ -54,7 +54,7 @@ export const AddPlayerForm = ({ game, setGame }: Props) => {
       <Formik
         initialValues={{ names: ['', '', ''] }}
         onSubmit={handleSubmit}
-        render={({ values, isSubmitting }) => (
+        render={({ values }) => (
           <Form className=" px-4 border-2">
             <FieldArray
               name="names"

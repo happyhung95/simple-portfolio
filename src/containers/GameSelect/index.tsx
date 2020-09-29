@@ -1,35 +1,29 @@
 /* eslint-disable jsx-a11y/aria-activedescendant-has-tabindex */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { useDispatch, useSelector, batch } from 'react-redux'
 import axios from 'axios'
 
 import Transition from '../../components/Transition'
 import { DownArrowSVG } from '../../svgs/DownArrow'
-import { Game } from '../../types'
+import { loadAll, loadGame, toggleGameList } from '../../redux/actions'
+import { Game, GameName, AppState } from '../../types'
 
-type GameName = {
-  _id: string
-  name: string
-}
+export const GameSelect = () => {
+  const dispatch = useDispatch()
+  const allGames = useSelector((state: AppState) => state.pokerBoard.allGames)
+  const game = useSelector((state: AppState) => state.pokerBoard.game)
+  const showGameList = useSelector((state: AppState) => state.pokerBoard.showGameList)
 
-type Props = {
-  isListOpen: boolean
-  setListOpen: (value: React.SetStateAction<boolean>) => void
-  setGame: (value: React.SetStateAction<Game | undefined>) => void
-}
-
-export const GameSelect = ({ isListOpen, setListOpen, setGame }: Props) => {
-  const [selected, setSelected] = useState<GameName>()
-  const [gameList, loadGameList] = useState<GameName[]>([])
-
-  const toggleDropdown = () => setListOpen(!isListOpen)
+  const toggleDropdown = () => dispatch(toggleGameList(!showGameList))
 
   const handleClick = async (game: GameName) => {
     const res = await axios.get(`https://poker-board.herokuapp.com/api/v1/${game._id}`)
-    setGame(res.data)
-    setSelected(game)
-    toggleDropdown()
+    batch(() => {
+      dispatch(loadGame(res.data as Game))
+      dispatch(toggleGameList(!showGameList)) // close game list panel
+    })
   }
 
   const node = useRef<HTMLDivElement>() // to detect outside click
@@ -40,16 +34,17 @@ export const GameSelect = ({ isListOpen, setListOpen, setGame }: Props) => {
       return
     }
     // outside click
-    setListOpen(false)
+    dispatch(toggleGameList(false))
   }
 
   useEffect(() => {
     async function fetchGameList() {
       const res = await axios.get('https://poker-board.herokuapp.com/api/v1')
-      loadGameList(res.data as GameName[])
+      dispatch(loadAll(res.data as GameName[]))
     }
     fetchGameList()
-    // add event when GameList is mounted
+
+    // add event when GameSelect is mounted
     // @ts-ignore
     document.addEventListener('click', outsideClickHandler)
     // return function to be called when unmounted
@@ -58,7 +53,9 @@ export const GameSelect = ({ isListOpen, setListOpen, setGame }: Props) => {
       // @ts-ignore
       document.removeEventListener('click', outsideClickHandler)
     }
-  }, [])
+  }, [game])
+
+  useEffect(()=> {}, [showGameList])
 
   return (
     <div className="mt-2 px-4 relative">
@@ -73,20 +70,20 @@ export const GameSelect = ({ isListOpen, setListOpen, setGame }: Props) => {
         onClick={toggleDropdown}
       >
         <DownArrowSVG
-          className={`h-5 w-5 transform transition duration-100 ease-in-out ${!isListOpen && '-rotate-90'} `}
+          className={`h-5 w-5 transform transition duration-100 ease-in-out ${!showGameList && '-rotate-90'} `}
         />
-        <p className="font-bold text-xl">{selected ? selected.name : 'Select game'}</p>
+        <p className="font-bold text-xl">{game ? game.name : 'Select game'}</p>
       </div>
       {/* Game panel */}
-      <Transition showCondition={isListOpen}>
+      <Transition showCondition={showGameList}>
         <div className="flex-col absolute mt-2 px-4 w-11/12 bg-gray-300 rounded-lg shadow-lg transition ease-in-out duration-100">
-          {gameList.map(({ _id, name }, index) => (
+          {allGames?.map(({ _id, name }, index) => (
             <div
               key={_id}
               className={`my-1 px-1 py-1 ${index !== 0 && 'border-t border-opacity-25 border-gray-600'}`}
               onClick={() => handleClick({ _id, name })}
             >
-              <span className={selected?._id === _id ? 'font-bold text-xl' : 'text-gray-600 text-xl'}>{name}</span>
+              <span className={game?._id === _id ? 'font-bold text-xl' : 'text-gray-600 text-xl'}>{name}</span>
             </div>
           ))}
         </div>

@@ -4,15 +4,17 @@ import { Transition } from '@tailwindui/react'
 type Props = {
   children: React.ReactNode
   showCondition: boolean
+  durationEnter?: '75' | '100' | '150' | '200' | '300' | '500' | '700' | '1000'
+  durationLeave?: '75' | '100' | '150' | '200' | '300' | '500' | '700' | '1000'
 }
 
-const CustomTransition = ({ children, showCondition }: Props) => (
+const CustomTransition = ({ children, showCondition, durationEnter = '200', durationLeave = '100' }: Props) => (
   <Transition
     show={showCondition}
-    enter="transition ease-out duration-200 transform"
+    enter={`transition ease-out duration-${durationEnter} transform`}
     enterFrom="opacity-0 scale-95"
     enterTo="opacity-100 scale-100"
-    leave="transition ease-in duration-100 transform"
+    leave={`transition ease-out duration-${durationLeave} transform`}
     leaveFrom="opacity-100 scale-100"
     leaveTo="opacity-0 scale-95"
   >

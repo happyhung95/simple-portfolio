@@ -1,15 +1,12 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Formik, FormikHelpers, FormikProps, Form, Field } from 'formik'
 import axios from 'axios'
 
+import { loadGame } from '../../redux/actions'
 import { capitalizeString } from '../../helpers/index'
-import { Game } from '../../types'
-
-type Props = {
-  game: Game
-  setGame: (value: React.SetStateAction<Game | undefined>) => void
-}
+import { Game, AppState } from '../../types'
 
 type FormValues = {
   from0: string
@@ -35,14 +32,17 @@ type Request = {
   requests: AddTransactionRequest[]
 }
 
-export const AddTransactionForm = ({ game, setGame }: Props) => {
-  const { players } = game
+export const AddTransactionForm = () => {
+  const dispatch = useDispatch()
+  const game = useSelector((state: AppState) => state.pokerBoard.game)
+
+  const { players } = game!
 
   const handleSubmit = async (values: FormValues, { setSubmitting, resetForm }: FormikHelpers<FormValues>) => {
     setSubmitting(false)
 
     const req: Request = {
-      gameId: game._id,
+      gameId: game!._id,
       requests: [],
     }
 
@@ -82,8 +82,8 @@ export const AddTransactionForm = ({ game, setGame }: Props) => {
       }
     })
 
-    const updateGame = await axios.post('https://poker-board.herokuapp.com/api/v1/transactions', { ...req })
-    setGame(updateGame.data as Game)
+    const res = await axios.post('https://poker-board.herokuapp.com/api/v1/transactions', { ...req })
+    dispatch(loadGame(res.data as Game))
     resetForm({})
   }
 
@@ -96,7 +96,7 @@ export const AddTransactionForm = ({ game, setGame }: Props) => {
     <div className="my-6 mx-4 bg-gray-300 rounded shadow">
       <div className="pt-4 pl-8 font-bold text-xl text-gray-700 shadow">Add transactions</div>
       <Formik
-        initialValues={{ from0: '', to0: '', amount0: game.buyIn, from1: '', to1: '', amount1: game.buyIn }}
+        initialValues={{ from0: '', to0: '', amount0: game!.buyIn, from1: '', to1: '', amount1: game!.buyIn }}
         onSubmit={handleSubmit}
       >
         {(props: FormikProps<FormValues>) => (
@@ -130,7 +130,7 @@ export const AddTransactionForm = ({ game, setGame }: Props) => {
                   <div className="pb-1 px-1 font-mono font-medium text-xs text-gray-600">Amount</div>
                   <Field
                     className="py-1/2 px-2 w-full font-mono font-medium text-gray-800 border border-gray-200 border-opacity-25 rounded bg-gray-200 outline-none"
-                    placeholder={game.buyIn}
+                    placeholder={game!.buyIn}
                     name={amount}
                   />
                 </div>
