@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import Transition from '../../components/Transition'
-import { AddPlayerForm } from '../../components/AddPlayerForm'
-import { AddTransactionForm } from '../../components/AddTransactionForm'
-import { CalculatorSVG } from '../../svgs/Calculator'
-import { PeopleSVG } from '../../svgs/People'
-import { TransactionSVG } from '../../svgs/Transaction'
+import Transition, { AddPlayerForm, AddTransactionForm } from '../../components'
+import { CalculatorSVG, PeopleSVG, TransactionSVG } from '../../svgs'
 import { AppState } from '../../types'
-
 
 export const FunctionBar = () => {
   const game = useSelector((state: AppState) => state.pokerBoard.game)

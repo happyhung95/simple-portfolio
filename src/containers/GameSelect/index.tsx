@@ -5,8 +5,8 @@ import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector, batch } from 'react-redux'
 import axios from 'axios'
 
-import Transition from '../../components/Transition'
-import { DownArrowSVG } from '../../svgs/DownArrow'
+import Transition from '../../components'
+import { DownArrowSVG } from '../../svgs'
 import { loadAll, loadGame, toggleGameList } from '../../redux/actions'
 import { Game, GameName, AppState } from '../../types'
 

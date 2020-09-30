@@ -2,9 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
-import { Game, AppState } from '../../types'
-import { PlayerCard } from '../../components/PlayerCard'
+import { PlayerCard } from '../../components'
 import { loadGame } from '../../redux/actions'
+import { Game, AppState } from '../../types'
 
 export const GameCard = () => {
   const dispatch = useDispatch()

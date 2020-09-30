@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { AppState } from '../../types'
 import { toggleGameSelect, toggleCreateGame } from '../../redux/actions'
+import { AppState } from '../../types'
 
 export const NavBar = () => {
   const dispatch = useDispatch()

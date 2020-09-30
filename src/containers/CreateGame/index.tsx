@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Formik, FormikHelpers, FormikProps, Form, Field } from 'formik'
 import axios from 'axios'
 
-import Transition from '../../components/Transition'
+import Transition from '../../components'
 import { loadGame, toggleCreateGame } from '../../redux/actions'
 import { capitalizeString } from '../../helpers'
 import { Game, AppState } from '../../types'

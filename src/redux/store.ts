@@ -1,7 +1,7 @@
 import { createStore, compose } from 'redux'
 
-import { AppState } from '../types'
 import createRootReducer from './reducers'
+import { AppState } from '../types'
 
 const initState: AppState = {
   pokerBoard: {
