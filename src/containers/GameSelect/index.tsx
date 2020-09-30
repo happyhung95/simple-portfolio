@@ -68,12 +68,12 @@ export const GameSelect = () => {
       </div>
       {/* Game panel */}
       <Transition showCondition={showGameList}>
-        <div className="flex-col mt-2 px-4 bg-gray-300 rounded-lg shadow-lg transition ease-in-out duration-100 ">
+        <div className="flex-col mt-2 px-8 bg-gray-300 rounded-lg shadow-lg transition ease-in-out duration-100 ">
           {allGames ? (
             <>
               {allGames.map(({ _id, name }, index) => (
                 <div
-                  className={`my-1 px-1 py-1 flex justify-between items-center ${
+                  className={`my-1 pl-1 pr-2 py-1 flex justify-between items-center ${
                     index !== 0 && 'border-t border-opacity-25 border-gray-600'
                   }`}
                 >
