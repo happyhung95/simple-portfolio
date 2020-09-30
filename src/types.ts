@@ -36,9 +36,10 @@ export type SVGProps = {
 
 export const LOAD_GAME = 'LOAD_GAME'
 export const LOAD_ALL_GAMES = 'LOAD_ALL_GAMES'
-export const TOGGLE_GAME_SELECT = 'TOGGLE_GAME_SELECT'
-export const TOGGLE_GAME_LIST = 'TOGGLE_GAME_LIST'
-export const TOGGLE_CREATE_GAME = 'TOGGLE_CREATE_GAME'
+export const DISPLAY_GAME_SELECT = 'DISPLAY_GAME_SELECT'
+export const DISPLAY_GAME_LIST = 'DISPLAY_GAME_LIST'
+export const DISPLAY_CREATE_GAME = 'DISPLAY_CREATE_GAME'
+export const DISPLAY_GAME_CARD = 'DISPLAY_GAME_CARD'
 
 export type LoadAllGamesAction = {
   type: typeof LOAD_ALL_GAMES
@@ -54,34 +55,48 @@ export type LoadGameAction = {
   }
 }
 
-export type ToggleGameSelect = {
-  type: typeof TOGGLE_GAME_SELECT
+export type DisplayGameSelectAction = {
+  type: typeof DISPLAY_GAME_SELECT
   payload: {
     showGameSelect: boolean
   }
 }
 
-export type ToggleGameList = {
-  type: typeof TOGGLE_GAME_LIST
+export type DisplayGameListAction = {
+  type: typeof DISPLAY_GAME_LIST
   payload: {
     showGameList: boolean
   }
 }
 
-export type ToggleCreateGame = {
-  type: typeof TOGGLE_CREATE_GAME
+export type DisplayGameCardAction = {
+  type: typeof DISPLAY_GAME_CARD
+  payload: {
+    showGameCard: boolean
+  }
+}
+
+export type DisplayCreateGameAction = {
+  type: typeof DISPLAY_CREATE_GAME
   payload: {
     showCreateGame: boolean
   }
 }
 
-export type Actions = LoadAllGamesAction | LoadGameAction | ToggleGameSelect | ToggleGameList | ToggleCreateGame
+export type Actions =
+  | LoadAllGamesAction
+  | LoadGameAction
+  | DisplayGameSelectAction
+  | DisplayGameListAction
+  | DisplayGameCardAction
+  | DisplayCreateGameAction
 
 export type PokerBoardState = {
   allGames: GameName[] | undefined
   game: Game | undefined
   showGameSelect: boolean
   showGameList: boolean
+  showGameCard: boolean
   showCreateGame: boolean
 }
 

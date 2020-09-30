@@ -7,7 +7,7 @@ import { Formik, FormikHelpers, FormikProps, Form, Field } from 'formik'
 import axios from 'axios'
 
 import Transition from '../../components'
-import { loadGame, toggleCreateGame } from '../../redux/actions'
+import { loadGame, displayCreateGame } from '../../redux/actions'
 import { capitalizeString } from '../../helpers'
 import { Game, AppState } from '../../types'
 
@@ -25,7 +25,7 @@ export const CreateGame = () => {
       name: name ? capitalizeString(name) : `Poker ${new Date().getDate()}.${new Date().getMonth()}`,
       buyIn: buyIn ? parseInt(buyIn) : 40,
     })
-    dispatch(toggleCreateGame(false))
+    dispatch(displayCreateGame(false))
     setTimeout(() => dispatch(loadGame(res.data as Game)), 150)
   }
 

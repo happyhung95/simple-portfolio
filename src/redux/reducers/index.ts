@@ -6,9 +6,10 @@ import {
   Actions,
   LOAD_ALL_GAMES,
   LOAD_GAME,
-  TOGGLE_CREATE_GAME,
-  TOGGLE_GAME_LIST,
-  TOGGLE_GAME_SELECT,
+  DISPLAY_CREATE_GAME,
+  DISPLAY_GAME_LIST,
+  DISPLAY_GAME_CARD,
+  DISPLAY_GAME_SELECT,
 } from '../../types'
 
 const initialState: PokerBoardState = {
@@ -16,6 +17,7 @@ const initialState: PokerBoardState = {
   game: undefined,
   showGameSelect: true,
   showGameList: false,
+  showGameCard: false,
   showCreateGame: false,
 }
 
@@ -27,13 +29,16 @@ function pokerBoard(state: PokerBoardState = initialState, action: Actions): Pok
     case LOAD_GAME: {
       return { ...state, ...action.payload }
     }
-    case TOGGLE_CREATE_GAME: {
+    case DISPLAY_CREATE_GAME: {
       return { ...state, ...action.payload }
     }
-    case TOGGLE_GAME_LIST: {
+    case DISPLAY_GAME_LIST: {
       return { ...state, ...action.payload }
     }
-    case TOGGLE_GAME_SELECT: {
+    case DISPLAY_GAME_CARD: {
+      return { ...state, ...action.payload }
+    }
+    case DISPLAY_GAME_SELECT: {
       return { ...state, ...action.payload }
     }
     default:

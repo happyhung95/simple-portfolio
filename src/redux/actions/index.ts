@@ -3,9 +3,10 @@ import {
   GameName,
   LOAD_ALL_GAMES,
   LOAD_GAME,
-  TOGGLE_CREATE_GAME,
-  TOGGLE_GAME_LIST,
-  TOGGLE_GAME_SELECT,
+  DISPLAY_CREATE_GAME,
+  DISPLAY_GAME_LIST,
+  DISPLAY_GAME_CARD,
+  DISPLAY_GAME_SELECT,
   Actions,
 } from '../../types'
 
@@ -23,23 +24,30 @@ export function loadGame(game: Game): Actions {
   }
 }
 
-export function toggleGameSelect(showGameSelect: boolean): Actions {
+export function displayGameSelect(showGameSelect: boolean): Actions {
   return {
-    type: TOGGLE_GAME_SELECT,
+    type: DISPLAY_GAME_SELECT,
     payload: { showGameSelect },
   }
 }
 
-export function toggleGameList(showGameList: boolean): Actions {
+export function displayGameList(showGameList: boolean): Actions {
   return {
-    type: TOGGLE_GAME_LIST,
+    type: DISPLAY_GAME_LIST,
     payload: { showGameList },
   }
 }
 
-export function toggleCreateGame(showCreateGame: boolean): Actions {
+export function displayGameCard(showGameCard: boolean): Actions {
   return {
-    type: TOGGLE_CREATE_GAME,
+    type: DISPLAY_GAME_CARD,
+    payload: { showGameCard },
+  }
+}
+
+export function displayCreateGame(showCreateGame: boolean): Actions {
+  return {
+    type: DISPLAY_CREATE_GAME,
     payload: { showCreateGame },
   }
 }

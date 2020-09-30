@@ -3,11 +3,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector, batch } from 'react-redux'
+import Loader from 'react-loader-spinner'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import axios from 'axios'
 
 import Transition from '../../components'
 import { DownArrowSVG } from '../../svgs'
-import { loadAll, loadGame, toggleGameList } from '../../redux/actions'
+import { loadGame, displayGameList, displayGameCard } from '../../redux/actions'
 import { Game, GameName, AppState } from '../../types'
 
 export const GameSelect = () => {
@@ -15,14 +17,21 @@ export const GameSelect = () => {
   const allGames = useSelector((state: AppState) => state.pokerBoard.allGames)
   const game = useSelector((state: AppState) => state.pokerBoard.game)
   const showGameList = useSelector((state: AppState) => state.pokerBoard.showGameList)
+  const showGameCard = useSelector((state: AppState) => state.pokerBoard.showGameCard)
 
-  const toggleDropdown = () => dispatch(toggleGameList(!showGameList))
+  const toggleDropdown = () => {
+    batch(() => {
+      dispatch(displayGameList(!showGameList))
+      if (game) dispatch(displayGameCard(!showGameCard))
+    })
+  }
 
-  const handleClick = async (game: GameName) => {
+  const handleGameSelect = async (game: GameName) => {
     const res = await axios.get(`https://poker-board.herokuapp.com/api/v1/${game._id}`)
     batch(() => {
       dispatch(loadGame(res.data as Game))
-      dispatch(toggleGameList(!showGameList)) // close game list panel
+      dispatch(displayGameList(false))
+      dispatch(displayGameCard(true))
     })
   }
 
@@ -34,16 +43,10 @@ export const GameSelect = () => {
       return
     }
     // outside click
-    dispatch(toggleGameList(false))
+    if (showGameList) dispatch(displayGameList(false))
   }
 
   useEffect(() => {
-    async function fetchGameList() {
-      const res = await axios.get('https://poker-board.herokuapp.com/api/v1')
-      dispatch(loadAll(res.data as GameName[]))
-    }
-    fetchGameList()
-
     // add event when GameSelect is mounted
     // @ts-ignore
     document.addEventListener('click', outsideClickHandler)
@@ -53,9 +56,7 @@ export const GameSelect = () => {
       // @ts-ignore
       document.removeEventListener('click', outsideClickHandler)
     }
-  }, [game])
-
-  useEffect(()=> {}, [showGameList])
+  }, [])
 
   return (
     <div className="mt-2 px-4 relative">
@@ -77,15 +78,23 @@ export const GameSelect = () => {
       {/* Game panel */}
       <Transition showCondition={showGameList}>
         <div className="flex-col absolute mt-2 px-4 w-11/12 bg-gray-300 rounded-lg shadow-lg transition ease-in-out duration-100">
-          {allGames?.map(({ _id, name }, index) => (
-            <div
-              key={_id}
-              className={`my-1 px-1 py-1 ${index !== 0 && 'border-t border-opacity-25 border-gray-600'}`}
-              onClick={() => handleClick({ _id, name })}
-            >
-              <span className={game?._id === _id ? 'font-bold text-xl' : 'text-gray-600 text-xl'}>{name}</span>
+          {allGames ? (
+            <>
+              {allGames.map(({ _id, name }, index) => (
+                <div
+                  key={_id}
+                  className={`my-1 px-1 py-1 ${index !== 0 && 'border-t border-opacity-25 border-gray-600'}`}
+                  onClick={() => handleGameSelect({ _id, name })}
+                >
+                  <span className={game?._id === _id ? 'font-bold text-xl' : 'text-gray-600 text-xl'}>{name}</span>
+                </div>
+              ))}
+            </>
+          ) : (
+            <div className="my-10 flex justify-center">
+              <Loader type="Bars" color="#cbd5e0" height={40} width={40} />
             </div>
-          ))}
+          )}
         </div>
       </Transition>
     </div>

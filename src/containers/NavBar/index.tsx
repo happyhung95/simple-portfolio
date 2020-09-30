@@ -1,21 +1,30 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, batch } from 'react-redux'
 
-import { toggleGameSelect, toggleCreateGame } from '../../redux/actions'
+import { displayGameSelect, displayCreateGame, displayGameCard } from '../../redux/actions'
 import { AppState } from '../../types'
 
 export const NavBar = () => {
   const dispatch = useDispatch()
+  const game = useSelector((state: AppState) => state.pokerBoard.game)
   const showGameSelect = useSelector((state: AppState) => state.pokerBoard.showGameSelect)
-  const showCreateGame = useSelector((state: AppState) => state.pokerBoard.showCreateGame)
 
   const handleClick = () => {
     if (showGameSelect) {
-      dispatch(toggleGameSelect(!showGameSelect))
-      setTimeout(() => dispatch(toggleCreateGame(!showCreateGame)), 100)
+      // display create game form
+      batch(() => {
+        dispatch(displayGameSelect(false))
+        dispatch(displayGameCard(false))
+      })
+      setTimeout(() => dispatch(displayCreateGame(true)), 100)
     } else {
-      dispatch(toggleCreateGame(!showCreateGame))
-      setTimeout(() => dispatch(toggleGameSelect(!showGameSelect)), 100)
+      dispatch(displayCreateGame(false))
+      setTimeout(() => {
+        batch(() => {
+          dispatch(displayGameSelect(true))
+          if (game) dispatch(displayGameCard(true))
+        })
+      }, 100)
     }
   }
 

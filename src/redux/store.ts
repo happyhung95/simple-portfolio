@@ -9,6 +9,7 @@ const initState: AppState = {
     game: undefined,
     showGameSelect: true,
     showGameList: false,
+    showGameCard: false,
     showCreateGame: false,
   },
 }
