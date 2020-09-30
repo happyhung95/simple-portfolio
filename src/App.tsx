@@ -20,7 +20,7 @@ export default function App() {
       dispatch(loadAll(res?.data as GameName[]))
     }
     fetchAllGames()
-  }, [])
+  }, [dispatch])
 
   return (
     <>
