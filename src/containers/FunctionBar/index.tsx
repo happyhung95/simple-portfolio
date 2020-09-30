@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import Transition, { AddPlayerForm, AddTransactionForm } from '../../components'
+import { AddPlayerForm, AddTransactionForm, Transition } from '../../components'
 import { CalculatorSVG, PeopleSVG, TransactionSVG } from '../../svgs'
 import { AppState } from '../../types'
 
@@ -58,11 +58,11 @@ export const FunctionBar = () => {
       </div>
       <Transition showCondition={showGameBalance}>
         {gameBalance === 0 ? (
-          <div className="mt-4 mx-20 p-2 justify-self-center border-2 border-white bg-teal-200 rounded-lg text-teal-600 font-bold font-mono text-2xl text-center">
+          <div className="mt-4 mx-20 p-2 justify-self-center border-2 border-white bg-teal-200 rounded-lg text-teal-600 font-bold font-mono text-xl text-center">
             Balance is 0
           </div>
         ) : (
-          <div className="mt-4 mx-20 p-2 justify-self-center border-2 border-white bg-red-200 rounded-lg text-red-600 font-bold font-mono text-2xl text-center">
+          <div className="mt-4 mx-20 p-2 justify-self-center border-2 border-white bg-red-200 rounded-lg text-red-600 font-bold font-mono text-xl text-center">
             Balance is {gameBalance}
           </div>
         )}

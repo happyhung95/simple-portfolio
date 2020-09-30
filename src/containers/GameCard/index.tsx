@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
+import Loader from 'react-loader-spinner'
 import axios from 'axios'
 
 import { PlayerCard } from '../../components'
@@ -8,13 +10,16 @@ import { Game, AppState } from '../../types'
 
 export const GameCard = () => {
   const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
   const game = useSelector((state: AppState) => state.pokerBoard.game)
 
   const changeStatus = async (isClosed: boolean) => {
+    setLoading(true)
     const res = await axios.put(`https://poker-board.herokuapp.com/api/v1/game/${game?._id}`, {
       gameClosed: isClosed,
     })
     dispatch(loadGame(res.data as Game))
+    setLoading(false)
   }
 
   return (
@@ -25,9 +30,10 @@ export const GameCard = () => {
             <div className="px-2 ml-3 mr-2 text-white bg-red-500 rounded-full text-sm font-semibold">Finished</div>
             <button
               onClick={() => changeStatus(false)}
-              className=" px-1 border-2 border-teal-600 rounded bg-gray-100 text-sm text-teal-600 font-bold outline-none"
+              className="w-24 px-1 flex justify-center border-2 border-teal-600 rounded bg-gray-100 text-sm text-teal-600 font-bold outline-none"
+              disabled={loading}
             >
-              Reactivate?
+              {!loading ? 'Reactivate?' : <Loader type="Bars" color="#319795" height={18} width={18} />}
             </button>
           </div>
           <div className="text-right pt-2 pb-1 pr-6 font-semibold text-gray-600">Buy-in: {game.buyIn}</div>
@@ -38,9 +44,10 @@ export const GameCard = () => {
             <div className="px-2 ml-3 mr-2 text-white bg-teal-500 rounded-full text-sm font-semibold">Ongoing</div>
             <button
               onClick={() => changeStatus(true)}
-              className=" px-1 border-2 border-red-500 rounded bg-gray-100 text-sm text-red-500 font-bold outline-none"
+              className="w-20 px-1 flex justify-center border-2 border-red-500 rounded bg-gray-100 text-sm text-red-500 font-bold outline-none"
+              disabled={loading}
             >
-              Finish?
+              {!loading ? 'Finish?' : <Loader type="Bars" color="#f56565" height={18} width={18} />}
             </button>
           </div>
           <div className="text-right pt-2 pb-1 pr-6 font-semibold text-gray-600">Buy-in: {game?.buyIn}</div>

@@ -1,7 +1,9 @@
 /* eslint-disable array-callback-return */
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik, FormikHelpers, Form, Field, FieldArray } from 'formik'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
+import Loader from 'react-loader-spinner'
 import axios from 'axios'
 
 import { loadGame } from '../../redux/actions'
@@ -25,10 +27,13 @@ type Request = {
 
 export const AddPlayerForm = () => {
   const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
   const game = useSelector((state: AppState) => state.pokerBoard.game)
 
-  const handleSubmit = async ({ names }: FormValues, { resetForm, setSubmitting }: FormikHelpers<FormValues>) => {
-    setSubmitting(false)
+  const handleSubmit = async ({ names }: FormValues, { resetForm }: FormikHelpers<FormValues>) => {
+    if (names.every((name) => name === '')) return
+    setLoading(true)
+
     const req: Request = {
       gameId: game!._id,
       requests: [],
@@ -46,6 +51,7 @@ export const AddPlayerForm = () => {
     const res = await axios.post('https://poker-board.herokuapp.com/api/v1/players', { ...req })
     dispatch(loadGame(res.data as Game))
     resetForm({})
+    setLoading(false)
   }
 
   return (
@@ -97,10 +103,11 @@ export const AddPlayerForm = () => {
                   {values.names.length > 0 && (
                     <div className="mt-2 mb-6">
                       <button
-                        className="p-2 border-2 border-white rounded-lg bg-gray-800 text-white font-mono font-semibold outline-none"
+                        className="w-20 p-2 border-2 flex justify-center border-white rounded-lg bg-gray-800 text-white font-mono font-semibold outline-none"
                         type="submit"
+                        disabled={loading}
                       >
-                        Submit
+                        {!loading ? 'Submit' : <Loader type="Bars" color="#fff" height={25} width={25} />}
                       </button>
                     </div>
                   )}

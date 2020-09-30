@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 
-import Transition from './components'
+import { Transition } from './components'
 import { CreateGame, FunctionBar, GameCard, GameSelect, NavBar } from './containers'
 import { loadAll } from './redux/actions'
 import { AppState, GameName } from './types'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Transition } from '@tailwindui/react'
+import { Transition as TailwindTransaction } from '@tailwindui/react'
 
 type Props = {
   children: React.ReactNode
@@ -8,8 +8,8 @@ type Props = {
   durationLeave?: '75' | '100' | '150' | '200' | '300' | '500' | '700' | '1000'
 }
 
-const CustomTransition = ({ children, showCondition, durationEnter = '200', durationLeave = '100' }: Props) => (
-  <Transition
+export const Transition = ({ children, showCondition, durationEnter = '200', durationLeave = '100' }: Props) => (
+  <TailwindTransaction
     show={showCondition}
     enter={`transition ease-out duration-${durationEnter} transform`}
     enterFrom="opacity-0 scale-95"
@@ -19,7 +19,6 @@ const CustomTransition = ({ children, showCondition, durationEnter = '200', dura
     leaveTo="opacity-0 scale-95"
   >
     {children}
-  </Transition>
+  </TailwindTransaction>
 )
 
-export default CustomTransition

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import Transition from '../Transition'
+import { Transition } from '../Transition'
 import { DownArrowSVG } from '../../svgs'
 import { capitalizeString } from '../../helpers'
 import { Player } from '../../types'

@@ -1,4 +1,5 @@
 export * from './AddPlayerForm'
 export * from './AddTransactionForm'
+export * from './Alert'
 export * from './PlayerCard'
-export {default} from './Transition'
+export * from './Transition'

@@ -1,13 +1,12 @@
-/* eslint-disable jsx-a11y/aria-activedescendant-has-tabindex */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch, useSelector, batch } from 'react-redux'
 import { Formik, FormikHelpers, FormikProps, Form, Field } from 'formik'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
+import Loader from 'react-loader-spinner'
 import axios from 'axios'
 
-import Transition from '../../components'
-import { loadGame, displayCreateGame } from '../../redux/actions'
+import { Transition } from '../../components'
+import { loadGame, displayCreateGame, displayGameSelect, displayGameCard } from '../../redux/actions'
 import { capitalizeString } from '../../helpers'
 import { Game, AppState } from '../../types'
 
@@ -18,15 +17,23 @@ type FormValues = {
 
 export const CreateGame = () => {
   const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
   const showCreateGame = useSelector((state: AppState) => state.pokerBoard.showCreateGame)
 
   const handleSubmit = async ({ name, buyIn }: FormValues, { setSubmitting, resetForm }: FormikHelpers<FormValues>) => {
+    setLoading(true)
     const res = await axios.post(`https://poker-board.herokuapp.com/api/v1/game`, {
       name: name ? capitalizeString(name) : `Poker ${new Date().getDate()}.${new Date().getMonth()}`,
       buyIn: buyIn ? parseInt(buyIn) : 40,
     })
     dispatch(displayCreateGame(false))
-    setTimeout(() => dispatch(loadGame(res.data as Game)), 150)
+    setTimeout(() => {
+      batch(()=>{
+        dispatch(loadGame(res.data as Game))
+        dispatch(displayGameSelect(true))
+        if (res.data) dispatch(displayGameCard(true))
+      })
+    }, 150)
   }
 
   return (
@@ -55,10 +62,11 @@ export const CreateGame = () => {
                 </div>
                 <div className=" my-2 mx-4">
                   <button
-                    className="p-2 border-2 border-white rounded-lg bg-gray-800 text-white font-mono font-semibold outline-none"
+                    className="w-20 p-2 flex justify-center border-2 border-white rounded-lg bg-gray-800 text-white font-mono font-semibold outline-none"
                     type="submit"
+                    disabled={loading}
                   >
-                    Create
+                    {!loading ? 'Submit' : <Loader type="Bars" color="#fff" height={25} width={25} />}
                   </button>
                 </div>
               </Form>
