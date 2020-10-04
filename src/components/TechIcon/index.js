@@ -6,7 +6,7 @@ export const TechIcon = ({ icon, title }) => {
   const iconId = `tech-icon-${title}`
   return (
     <div className="tech__item">
-      <div className="tech__icon" id={iconId}>
+      <div id={iconId}>
         {icon}
       </div>
       <p>{title}</p>

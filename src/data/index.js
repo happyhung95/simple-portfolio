@@ -1,9 +1,21 @@
 import React from 'react'
 
-import pokerBoardImg from '../assets/images/poker-board.png'
+import pokerBoardImg from '../assets/images/poker-web.png'
 import bambooShopImg from '../assets/images/bamboo-shop.png'
 import countryStoreImg from '../assets/images/country-store.png'
-import { NextJs, NodeJs, ReactIcon, JavaScript, TypeScript, Python, MongoDB, PostgreSQL } from '../assets/svg-icons/svg'
+import {
+  NextJs,
+  NodeJs,
+  ReactIcon,
+  JavaScript,
+  TypeScript,
+  Python,
+  MongoDB,
+  PostgreSQL,
+  Grails,
+  Groovy,
+  Docker,
+} from '../assets/svg-icons/svg'
 
 export const scrollDownTo = 'techStack'
 
@@ -52,8 +64,8 @@ export const projects = [
     title: 'Poker Board API',
     subtitle: 'Stacks: Jest, MongoDB, Mongoose, Node.js, Socket.io., TypeScript',
     paragraph: pokerBoard,
-    buttonLabel: 'Read more',
-    buttonHref: 'https://github.com/happyhung95/poker-board-api',
+    buttonLabel: 'Visit page',
+    buttonHref: 'https://poker.happyhung.com',
     image: pokerBoardImg,
   },
   {
@@ -61,7 +73,7 @@ export const projects = [
     title: 'Bamboo Shop',
     subtitle: 'Stacks: Google OAuth, Jest, Material-UI, MongoDB, Mongoose, Next.js, Node.js, TailwindCSS',
     paragraph: bambooShop,
-    buttonLabel: 'Read more',
+    buttonLabel: 'Visit repository',
     buttonHref: 'https://github.com/happyhung95/bamboo-shop-api',
     image: bambooShopImg,
   },
@@ -70,7 +82,7 @@ export const projects = [
     title: 'Countries Store',
     subtitle: 'Stacks: Hooks, Material-UI, React.js, Redux, Router, Saga, TypeScript',
     paragraph: countryStore,
-    buttonLabel: 'Read more',
+    buttonLabel: 'Visit page',
     buttonHref: 'https://happyhung95.github.io/countries-store/',
     image: countryStoreImg,
   },
@@ -109,6 +121,35 @@ export const stacks = [
     title: 'TypeScript',
     icon: <TypeScript />,
   },
+  {
+    title: 'Groovy',
+    icon: <Groovy />,
+  },
+  {
+    title: 'Grails',
+    icon: <Grails />,
+  },
+  {
+    title: 'Docker',
+    icon: <Docker />,
+  },
+  {
+    title: 'React Native',
+    icon: <ReactIcon />,
+  },
 ]
 
-export const stacksNoIcon = ['#Socket.io', '#TailwindCSS', '#MaterialUI', '#Express.js', '#Mongoose', '#Jest', '#Pytest', '#RobotFramework']
+export const stacksNoIcon = [
+  '#Socket.io',
+  '#TailwindCSS',
+  '#MaterialUI',
+  '#Express.js',
+  '#Mongoose',
+  '#Jest',
+  '#Pytest',
+  '#jQuery',
+  '#GORM',
+  '#AwsAmplify',
+  '#Sass',
+
+]

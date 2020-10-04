@@ -36,13 +36,15 @@
   @include wiggle-animation(0.8s, 10deg, -10deg, -0.4s);
 }
 #tech-icon-React,
+#tech-icon-React\ Native,
 #tech-icon-PostgreSQL,
-#tech-icon-MongoDb {
+#tech-icon-MongoDb, #tech-icon-Grails {
   @include wiggle-animation(5s, 0deg, 360deg, -1s);
 }
-#tech-icon-NextJs {
+#tech-icon-NextJs,
+#tech-icon-Groovy {
   @include wiggle-animation(0.8s, 10deg, -10deg, -0.6s);
 }
-#tech-icon-Python {
+#tech-icon-Python, #tech-icon-Docker {
   @include wiggle-animation(0.8s, 10deg, -10deg, 0.3s);
 }
