@@ -33,7 +33,7 @@ export const Contact = () => (
                 <a href="https://github.com/happyhung95" aria-label="Link to Github">
                   <i className="fab fa-github" aria-hidden="true" title="Link to Github" />
                 </a>
-                <a href="https://drive.google.com/file/d/1BYKIpe9ZL572LFHxpquxC4vd__IVdXAM/view?usp=sharing" aria-label="Link to CV">
+                <a href="https://drive.google.com/file/d/1RzPhprpDChKwq8zEq8YSY6eih6T0nB8c/view?usp=sharing" aria-label="Link to CV">
                   <i className="fas fa-file-alt" aria-hidden="true" title="Link to CV" />
                 </a>
               </div>
